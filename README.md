@@ -13,8 +13,13 @@ WHERE population > (SELECT population FROM world WHERE name = 'Russia');
 ![alt text](./images/image-1.jpg)
 
 **Explanation:**
-- Subquery mengambil populasi Rusia.
-- Query utama memilih semua negara dengan populasi lebih besar dari Rusia.
+- SELECT name: Bagian ini memilih kolom name dari tabel world, yang mungkin berisi nama-nama negara atau wilayah.
+- FROM world: Ini menunjukkan bahwa query mengambil data dari tabel world.
+- WHERE population > (...): Bagian ini menentukan kondisi bahwa jumlah populasi (population) dari negara yang dipilih harus lebih besar daripada hasil yang diperoleh dari - subquery yang ada di dalam tanda kurung (...).
+    - Subquery (SELECT population FROM world WHERE name = 'Russia'):
+    - Subquery ini memilih jumlah populasi dari negara yang memiliki nama 'Russia'.
+    - Subquery ini hanya menghasilkan satu nilai, yaitu jumlah populasi Rusia.
+- Query utama kemudian membandingkan populasi setiap negara dalam tabel world dengan nilai populasi Rusia.
 
 ---
 
@@ -32,8 +37,9 @@ AND gdp/population > (SELECT gdp/population FROM world WHERE name = 'United King
 ![alt text](./images/image-2.jpg)
 
 **Explanation:**
-- Subquery menghitung PDB per kapita Inggris (GDP dibagi populasi).
-- Query utama memilih negara-negara di Eropa dengan PDB per kapita lebih besar dari Inggris.
+- gdp/population: ini cara menghitung GDP per kapita (Gross Domestic Product dibagi jumlah penduduk).
+- Subquery SELECT gdp/population FROM world WHERE name = 'United Kingdom' akan menghasilkan nilai GDP per kapita Inggris.
+- Kueri utama kemudian mencari negara-negara di Eropa (continent = 'Europe') yang GDP per kapitanya lebih besar dari Inggris.
 
 ---
 
