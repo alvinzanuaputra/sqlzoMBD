@@ -226,7 +226,7 @@ WHERE continent IN (
 
 ## 10. Some countries have populations more than three times that of any of their neighbors (in the same continent). Give the countries and continents.
 
-*Tampilkan benua dan nama negara dengan populasi tertinggi di setiap benua.*
+*Beberapa negara memiliki jumlah penduduk lebih dari tiga kali lipat jumlah penduduk setiap negara lain di benua yang sama. Tampilkan nama negara dan benuanya.*
 
 ```sql
 SELECT continent, name 
