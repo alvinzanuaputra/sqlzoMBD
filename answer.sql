@@ -36,9 +36,14 @@ FROM world
 WHERE gdp > ALL (SELECT gdp FROM world WHERE continent = 'Europe' AND gdp IS NOT NULL);
 
 -- 7
-SELECT name 
+SELECT continent, name, area
 FROM world 
-WHERE gdp > (SELECT MAX(gdp) FROM world WHERE continent = 'Europe');
+WHERE area IN (
+    SELECT MAX(area) 
+    FROM world 
+    GROUP BY continent
+);
+
 
 -- 8
 SELECT continent, name
