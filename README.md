@@ -160,9 +160,13 @@ WHERE gdp > ALL (SELECT gdp FROM world WHERE continent = 'Europe' AND gdp IS NOT
 *Temukan negara terbesar (berdasarkan luas wilayah) di setiap benua, lalu tampilkan benua, nama negara, dan luas wilayahnya.*
 
 ```sql
-SELECT name 
+SELECT continent, name, area
 FROM world 
-WHERE gdp > (SELECT MAX(gdp) FROM world WHERE continent = 'Europe');
+WHERE area IN (
+    SELECT MAX(area) 
+    FROM world 
+    GROUP BY continent
+);
 ```
 
 ![alt text](./images/image-7.jpg)
