@@ -239,9 +239,13 @@ WHERE continent IN (
 *Beberapa negara memiliki jumlah penduduk lebih dari tiga kali lipat jumlah penduduk setiap negara lain di benua yang sama. Tampilkan nama negara dan benuanya.*
 
 ```sql
-SELECT continent, name 
-FROM world w1 
-WHERE population = (SELECT MAX(population) FROM world w2 WHERE w1.continent = w2.continent);
+SELECT name, continent
+FROM world x
+WHERE population > ALL (
+  SELECT 3 * population
+  FROM world y
+  WHERE y.continent = x.continent AND y.name != x.name
+);
 ```
 ![alt text](./images/image-10.jpg)
 
