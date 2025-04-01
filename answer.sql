@@ -65,6 +65,11 @@ WHERE continent IN (
 );
 
 -- 10
-SELECT continent, name 
-FROM world w1 
-WHERE population = (SELECT MAX(population) FROM world w2 WHERE w1.continent = w2.continent);
+SELECT name, continent
+FROM world x
+WHERE population > ALL (
+  SELECT 3 * population
+  FROM world y
+  WHERE y.continent = x.continent AND y.name != x.name
+);
+
